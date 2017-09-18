@@ -1,8 +1,8 @@
 #include <gtest/gtest.h>
-#include "../MOG/lib/Hello.h"
+#include "../MOG/lib/Hello/Hello.h"
 TEST(HelloWorld,hello){
-    char* x="Hello,world";
-    ASSERT_EQ(*x,*Hello_world());
+    const char* x="Hello,world";
+    ASSERT_EQ(*Hello_world(),*x);
 }
 
 int main(int argc, char **argv) {

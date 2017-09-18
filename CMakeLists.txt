@@ -1,7 +1,11 @@
 cmake_minimum_required(VERSION 3.9)
 project(MOG)
 find_package(GTest REQUIRED)
+find_package(catkin REQUIRED nav_msgs roscpp rostest tf rosbag_storage nodelet)
+find_package(Boost REQUIRED signals)
+include_directories(${BOOST_INCLUDE_DIRS} ${catkin_INCLUDE_DIRS})
 set(CMAKE_CXX_STANDARD 11)
+SET(EXECUTABLE_OUTPUT_PATH ${PROJECT_BINARY_DIR}/../bin/)
 ADD_SUBDIRECTORY(MOG)
 ADD_SUBDIRECTORY(test)
 
