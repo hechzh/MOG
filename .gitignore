@@ -1,0 +1,6 @@
+*~
+shared_lib/
+bin/
+build/
+cmake-build-debug/
+.idea/
