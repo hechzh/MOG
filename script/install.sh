@@ -4,6 +4,7 @@ cd build
 cmake ..
 make
 cd ..
-rm -rf build
+
 cd bin
 ./MOGTest
+./MOGOptimization

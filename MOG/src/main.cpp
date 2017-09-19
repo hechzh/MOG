@@ -1,6 +1,14 @@
-#include "../lib/Hello/Hello.h"
+#include <ros/ros.h>
 #include <iostream>
-int main(){
-    std::cout<<Hello_world()<<std::endl;
+
+#include "../lib/Hello/Hello.h"
+#include "../lib/Subsriber/rosbagsubscriber.h"
+using namespace std;
+int main(int argc, char** argv){
+    cout<<Hello_world()<<endl;
+    ros::init(argc, argv,"MOG");
+    rosbagsubscriber gn;
+    gn.startLiveSlam();
+    ros::spin();
     return 0;
 }

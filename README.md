@@ -8,10 +8,10 @@
 
 #### Dependencies:
 
-'GTest:https://github.com/google/googletest  
-catkin:  
+GTest:https://github.com/google/googletest  
+catkin:https://github.com/ros/catkin  
 Boost:  
-'
+
 
 #### Usage:
 The project aims at only use the scan data to do optimization for slam in ambiguity environment.

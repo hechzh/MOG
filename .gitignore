@@ -4,3 +4,4 @@ bin/
 build/
 cmake-build-debug/
 .idea/
+bag/
