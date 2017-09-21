@@ -6,6 +6,12 @@
 	chmod 4755 install.sh
 	./install.sh
 
+#### RemoveBuild:
+
+------
+        cd script
+	chmod 4755 remove.sh
+	./remove.sh
 #### Dependencies:
 
 GTest:https://github.com/google/googletest  
