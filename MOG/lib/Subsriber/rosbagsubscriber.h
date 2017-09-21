@@ -9,11 +9,13 @@
 #include "tf/transform_broadcaster.h"
 #include "message_filters/subscriber.h"
 #include "tf/message_filter.h"
+#include "../point2d/point2d.h"
 
 //#include "gmapping/gridfastslam/gridslamprocessor.h"
 //#include "gmapping/sensor/sensor_base/sensor.h"
 
-#include <boost/thread.hpp>
+#include <vector>
+
 #ifndef MOG_ROSBAGSUBSCRIBER_H
 #define MOG_ROSBAGSUBSCRIBER_H
 
@@ -45,6 +47,8 @@ private:
     const double transform_publish_period_=1;
     double tf_delay_;
     std::string odom_frame_;
+    boost::mutex storer_mutex_;
+    std::vector<point2d<double> > storer;
 };
 
 

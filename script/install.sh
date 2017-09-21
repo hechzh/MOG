@@ -7,4 +7,3 @@ cd ..
 
 cd bin
 ./MOGTest
-./MOGOptimization

@@ -34,10 +34,12 @@ scan_filter_->registerCallback(boost::bind(&rosbagsubscriber::laserCallback, thi
 
 transform_thread_ = new boost::thread(boost::bind(&rosbagsubscriber::publishLoop, this, transform_publish_period_));
 }
-void rosbagsubscriber::laserCallback(const sensor_msgs::LaserScan::ConstPtr &scan) {
+void rosbagsubscriber::laserCallback(const sensor_msgs::LaserScan::ConstPtr &scan)
+{
     std::cout<<(double)((*scan).range_min)<<std::endl;
 }
-void rosbagsubscriber::publishLoop(double transform_publish_period) {
+void rosbagsubscriber::publishLoop(double transform_publish_period)
+{
     if(transform_publish_period == 0)
         return;
     ros::Rate r(1.0 / transform_publish_period);
@@ -46,7 +48,8 @@ void rosbagsubscriber::publishLoop(double transform_publish_period) {
         r.sleep();
     }
 }
-void rosbagsubscriber::publishTransform() {
+void rosbagsubscriber::publishTransform()
+{
     std::cout << "publish loop success" << std::endl;
 }
 rosbagsubscriber::~rosbagsubscriber()

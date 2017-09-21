@@ -1,3 +1,3 @@
-SET(SRC_LIST main.cpp)
+SET(SRC_LIST main.cpp ../lib/point2d/point2d.cpp ../lib/point2d/point2d.h)
 ADD_EXECUTABLE(MOGOptimization ${SRC_LIST})
-TARGET_LINK_LIBRARIES(MOGOptimization MOGHello MOGSubsriber ${catkin_LIBRARIES} ${Boost_LIBRARIES} )
+TARGET_LINK_LIBRARIES(MOGOptimization MOGHello MOGSubsriber MOGpoint2d ${catkin_LIBRARIES} ${Boost_LIBRARIES} )
