@@ -53,6 +53,8 @@ TEST(Rotation,initializing){
     ASSERT_EQ(E.mvy,0.5);
     ASSERT_EQ(F.mvx,0.5);
     ASSERT_EQ(G.mvx,1.5);
+    ASSERT_EQ(B.l1norm(),0);
+    ASSERT_EQ(C.l1norm(),mathpi/2);
 }
 TEST(Rotation,multipling){
     Drotation A(0,0,mathpi/2);
@@ -63,6 +65,16 @@ TEST(Rotation,multipling){
     ASSERT_DOUBLE_EQ((C*A).mvy,0);
     EXPECT_NEAR((A*C).mvx,0,1.0/(1<<14));
     EXPECT_NEAR((A*C).mvy,1,1.0/(1<<14));
+}
+TEST(Rotation,division){
+    Drotation A(0,0,mathpi/2);
+    Drotation B(0,0,-mathpi/2);
+    Drotation C(0,0,0,1,0);
+    Drotation D(0,0,0,0,1);
+    ASSERT_DOUBLE_EQ(((C/A)*A).mvx,1);
+    ASSERT_DOUBLE_EQ(((C/A)*A).mvy,0);
+    EXPECT_NEAR(((A/C)*C).mvx,0,1.0/(1<<14));
+    EXPECT_NEAR(((A/C)*C).mvy,0,1.0/(1<<14));
 }
 TEST(BasicFunctionTest, BasicScalar) {
     defineid(x);

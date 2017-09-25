@@ -1,6 +1,3 @@
-//
-// Created by shanghaitech on 17-9-21.
-//
 #include <iostream>
 #include <cmath>
 #ifndef MOG_POINT2D_H
@@ -24,20 +21,30 @@ public:
         return temp;
     }
     inline rotation<T> operator/(rotation<T> other){
-        rotation<T> temp(-this->mvx,-this->mvy,this->theta - other.theta,other.mvx,other.mvy);
+        rotation<T> temp(-other.mvx,-other.mvy,this->theta - other.theta,-other.mvx+this->mvx,-other.mvy+this->mvy);
         return temp;
     }
     inline void operator*=(rotation<T> other){
-        this->mvx+=other.x *std::cos(this->theta)- other.y *std::sin(this->theta);
-        this->mvy+=other.x *std::sin(this->theta)+ other.y *std::cos(this->theta);
+        this->mvx+=other.mvx *std::cos(this->theta)- other.mvy *std::sin(this->theta);
+        this->mvy+=other.mvx *std::sin(this->theta)+ other.mvy *std::cos(this->theta);
         this->theta+=other.theta;
     }
     inline void operator/=(rotation<T> other){
         this->theta-=other.theta;
-        this->mvx-=this->x *std::cos(this->theta)- this->y *std::sin(this->theta);
-        this->mvy-=this->x *std::sin(this->theta)+ this->y *std::cos(this->theta);
+        this->mvx-=other.mvx *std::cos(this->theta)- other.mvy *std::sin(this->theta);
+        this->mvy-=other.mvx *std::sin(this->theta)+ other.mvy *std::cos(this->theta);
     }
-    //bool operator==(rotation<T> other) return (theta==other.theta && mvx ==other.mvx && mvy == other.mvy);
+    inline bool operator==(rotation<T> other) {
+        return this->theta==other.theta && this->mvx ==other.mvx && this->mvy == other.mvy;
+    }
+    inline T l1norm(){
+        return std::abs(this->theta)+std::abs(this->mvx)+std::abs(this->mvy);
+    }
+    void print(){
+        std::cout<<"theta:"<<this->theta<<std::endl;
+        std::cout<<"mvx:"<<this->mvx<<std::endl;
+        std::cout<<"mvy:"<<this->mvy<<std::endl;
+    }
 };
 template <typename T>
 class point2d {
