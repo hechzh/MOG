@@ -1,5 +1,6 @@
 #include <iostream>
 #include <cmath>
+#include <vector>
 #ifndef MOG_POINT2D_H
 #define MOG_POINT2D_H
 template <typename T>
@@ -60,5 +61,23 @@ public:
     }
 };
 
+template <typename T>
+std::vector<point2d<T> > rotate(std::vector<point2d<T> > origin,rotation<T> move){
+    int size=origin.size();
+    std::vector<point2d<T> > answer(size);
+    for(int i=0;i<size;i++) answer[i]=origin[i].rotate(move);
+    return answer;
+}
+
+template <typename T>
+std::vector<point2d<T> > transform(std::vector<T> distance, T range_min, T range_max){
+    int size=distance.size()-1;
+    std::vector<point2d<T> > answer(size+1);
+    for(int i=0;i<size+1;i++){
+        T range=((size-i)*range_min+i*range_max)/size;
+        answer[i]=point2d<T>(std::sin(range)*distance[i],std::cos(range)*distance[i]);
+    }
+    return answer;
+}
 
 #endif //MOG_POINT2D_H
